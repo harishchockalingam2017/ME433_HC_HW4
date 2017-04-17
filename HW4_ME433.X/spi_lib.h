@@ -13,3 +13,5 @@ void init();
 void setVoltage(unsigned char channel, unsigned char voltage);
 unsigned char tWave(int a, int b, int c);
 unsigned char sWave(int a, int b, int c);
+
+#endif
