@@ -39,13 +39,14 @@
 
 #define CS LATBbits.LATB7
 #define samps 1000
-#define tickA 10
-#define tickB 5
+#define freqA 10
+#define freqB 5
 
 static volatile int tickA;
 static volatile int tickB;
 
-void__ISR(_TIMER_2_VECTOR, IPL5SOFT) Wave(void){
+void __ISR(_TIMER_2_VECTOR, IPL5SOFT) Wave(void){
+    char sVoltage; char tVoltage;
     sVoltage=sWave(freqA,tickA,samps);
     tVoltage=tWave(freqB,tickB,samps);
     
@@ -55,11 +56,11 @@ void__ISR(_TIMER_2_VECTOR, IPL5SOFT) Wave(void){
     tickA++;
     tickB++;
     
-    if(tickA==((int)((double)newA/freqA))){
+    if(tickA==((int)((double)samps/freqA))){
         tickA=0;        
     }
     
-    if(tickB==((int)((double)newB/freqB))){
+    if(tickB==((int)((double)samps/freqB))){
         tickB=0;        
     }
     IFS0bits.T2IF=0;
