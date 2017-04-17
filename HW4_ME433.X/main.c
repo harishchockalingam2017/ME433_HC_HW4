@@ -90,7 +90,7 @@ int main() {
     IFS0bits.T2IF = 0;   // clear Timer2 interrupt flag
     IEC0bits.T2IE = 1;  // enable Timer2 interrupt
     T2CONbits.ON = 1;  // Turn on  Timer2
-    __builtin_enable_interrupts();
+   
     
     // do your TRIS and LAT commands here
     TRISAbits.TRISA4=0;
