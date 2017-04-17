@@ -43,7 +43,7 @@ void setVoltage(char channel, char voltage){
       spi_io(0b10110000+(voltage >> 4)); //channel B
       spi_io((voltage&0b00001111) << 4);
       
-   } else if(channel==0{ //channel A
+   } else if(channel==0){ //channel A
       spi_io(0b00110000+(voltage >> 4));
       spi_io((voltage&0b00001111) << 4);
    } 
