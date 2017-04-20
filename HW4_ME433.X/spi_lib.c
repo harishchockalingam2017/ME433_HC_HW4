@@ -1,5 +1,7 @@
 #include "spi_lib.h"
 #include<math.h>
+#include<sys/attribs.h>
+#include<xc.h>  
 
 #define CS LATBbits.LATB7 
 
@@ -37,7 +39,7 @@ void init() {
   SPI1CON2bits.AUDEN=0;
                  
 }
-void setVoltage(char channel, char voltage){
+void setVoltage(unsigned char channel, unsigned char voltage){
     CS=0;
     if(channel==1){
       spi_io(0b10110000+(voltage >> 4)); //channel B
@@ -58,7 +60,7 @@ unsigned char tWave(int a, int b, int c){
 
 unsigned char sWave(int a, int b, int c){
     double i; char o;
-    i=127*sin(2*pi*(b*((double)a/c)))+127;
+    i=127*sin(2*3.14*(b*((double)a/c)))+127;
     o=(char) i;
     return o;
 }
